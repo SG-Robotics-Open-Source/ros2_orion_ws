@@ -15,7 +15,8 @@ The core focus of this project is to provide a robust localization and control s
 *   **Launch System:** A master launch file (`digital_twin.launch.py`) to bring up the entire robot stack with a single command.
 
 ## System Architecture
-*(Here, you can add one of your architecture diagrams later)*
+<img width="940" height="240" alt="ZL71IWCn4BtdAm8zU5gguCc355jQH4HGgeSYIvfCjs6JJ9cTMEhNszQLZJ47vvRttanuxqqwLiJHEz6rDkmKAI_NIhSDOGncYWv9ZkRdIHG6DYewdcFW5_i9ykew8HKHxllDo_Caf4Q_mm37FJuua0IQLMWS2B5QBbxVvMXs7h5wNjnLCpbL7aWbyFtZCdczRG6SVB01l6AhkuIYPcrgDEY1wP3Wri" src="https://github.com/user-attachments/assets/fb251b66-eefd-4532-be1e-f2e84b2fa31c" />
+
 
 ## Dependencies
 
