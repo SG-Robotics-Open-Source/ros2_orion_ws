@@ -1,7 +1,6 @@
 # Project Orion: A ROS 2 Stack for an Encoder-less Mecanum UGV
 
-![RViz Digital Twin](path/to/your/best_rviz_screenshot.png) 
-*(You'll add a screenshot later)*
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7f846976-a327-46c5-8511-2c049ef6a6b8)
 
 This repository contains the complete ROS 2 Humble software stack for "Project Orion," a custom-built, encoder-less Mecanum-wheeled Unmanned Ground Vehicle (UGV) designed for autonomous inspection tasks. This project was developed as part of an internship at the CSIR - National Aerospace Laboratories (NAL).
 
@@ -26,7 +25,6 @@ This project is built on ROS 2 Humble and requires several external hardware dri
 *   **ROS 2 Humble:** [Installation Instructions](https://docs.ros.org/en/humble/Installation.html)
 *   **`robot_localization` (EKF):** `sudo apt install ros-humble-robot-localization`
 *   **`imu_tools`:** `sudo apt install ros-humble-imu-tools`
-*   ... (add any others)
 
 ### Sensor Drivers
 *   **YDLIDAR HP60C Camera:** The driver for this camera is provided by Yahboom Technology and can be found in their `ascam_ros2_ws` workspace. [Link to their GitHub or the Google Drive you used].
