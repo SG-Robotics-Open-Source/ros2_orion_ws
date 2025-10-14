@@ -1,5 +1,12 @@
 # Project Orion: A ROS 2 Stack for an Encoder-less Mecanum UGV
 
+> **Note from SG-Robotics-Open-Source:** This repository is an official library version of a project originally created by Shahazad Abdulla. We maintain this copy as a stable, well-documented starting point for our community.
+
+> **Original Author:** [ShahazadAbdulla](https://github.com/ShahazadAbdulla)
+> **Original Repository:** [ShahazadAbdulla/ros2-project-orion-ugv](https://github.com/ShahazadAbdulla/ros2-project-orion-ugv)
+
+---
+
 ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7f846976-a327-46c5-8511-2c049ef6a6b8)
 
 This repository contains the complete ROS 2 Humble software stack for "Project Orion," a custom-built, encoder-less Mecanum-wheeled Unmanned Ground Vehicle (UGV) designed for autonomous inspection tasks. This project was developed as part of an internship at the CSIR - National Aerospace Laboratories (NAL).
