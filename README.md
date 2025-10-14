@@ -1,68 +1,91 @@
 # Project Orion: A ROS 2 Stack for an Encoder-less Mecanum UGV
 
-> **Note from SG-Robotics-Open-Source:** This repository is an official library version of a project originally created by Shahazad Abdulla. We maintain this copy as a stable, well-documented starting point for our community.
+> **Note from SG-Robotics-Open-Source:** This repository is a library version of a project originally created by Shahazad Abdulla. We maintain this copy as a stable, well-documented starting point for our community.
 
 > **Original Author:** [ShahazadAbdulla](https://github.com/ShahazadAbdulla)
 > **Original Repository:** [ShahazadAbdulla/ros2-project-orion-ugv](https://github.com/ShahazadAbdulla/ros2-project-orion-ugv)
 
 ---
 
+"Project Orion" is a complete ROS 2 software stack for a custom-built, Mecanum-wheeled Unmanned Ground Vehicle (UGV).
+
+This repository runs a **high-fidelity "Digital Twin"** of the robot. This means that instead of a physics simulation (like Gazebo), we are running the robot's actual control software and visualizing its state in real-time in RViz. It's a virtual copy that perfectly mirrors the real robot's geometry, sensors, and intended motion.
+
 ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7f846976-a327-46c5-8511-2c049ef6a6b8)
 
-This repository contains the complete ROS 2 Humble software stack for "Project Orion," a custom-built, encoder-less Mecanum-wheeled Unmanned Ground Vehicle (UGV) designed for autonomous inspection tasks. This project was developed as part of an internship at the CSIR - National Aerospace Laboratories (NAL).
+This platform is designed for students who want to build advanced projects on a robust foundation without starting from scratch.
 
-The core focus of this project is to provide a robust localization and control solution for a challenging hardware platform, leveraging modern robotics tools and sensor fusion techniques.
+To understand this project, it's helpful to know how the physical robot and the software are structured.
 
-## Key Features
+### The Hardware Hierarchy
 
-*   **High-Fidelity Digital Twin:** A detailed, kinematically accurate URDF model created using XACRO, including all chassis components and sensor placements.
-*   **Hardware Interface:** A robust, multi-tiered control pipeline using an Orin Nano (ROS 2), a Teensy 4.1 (I/O Hub), and an Arduino (IMU processing).
-*   **Encoder-less Odometry:** A `forward_kinematics` node that provides a wheel odometry estimate derived from calibrated motor commands (using our State-Based Kinematic Calibration model).
-*   **Teleoperation:** A stateful `teleop` node for smooth manual control, ideal for mapping.
-*   **Launch System:** A master launch file (`digital_twin.launch.py`) to bring up the entire robot stack with a single command.
+The physical Orion UGV uses a multi-computer setup:
+*   🧠 **The Brain (NVIDIA Orin Nano):** Runs the main ROS 2 system and all high-level software nodes.
+*   🦾 **The I/O Hub (Teensy 4.1):** Acts as a real-time bridge. It takes commands from the Orin and generates the precise PWM signals to control the wheel motors.
+*   ⚖️ **The IMU Co-processor (Arduino):** A dedicated board that processes data from the 9-DOF IMU sensor.
+
+### The Software Packages
+
+The code is organized into four main ROS 2 packages:
+*   `ugv_description`: Contains the 3D model (URDF/XACRO) of the robot, based on its real-world CAD files.
+*   `ugv_hardware`: The crucial hardware interface node that communicates with the Teensy over USB serial to send motor commands and receive IMU data.
+*   `ugv_teleop`: A simple keyboard teleoperation node to drive the robot by publishing `/cmd_vel` messages.
+*   `ugv_bringup`: Contains the master `launch` file to start the entire system with a single command.
 
 ## System Architecture
 <img width="940" height="240" alt="ZL71IWCn4BtdAm8zU5gguCc355jQH4HGgeSYIvfCjs6JJ9cTMEhNszQLZJ47vvRttanuxqqwLiJHEz6rDkmKAI_NIhSDOGncYWv9ZkRdIHG6DYewdcFW5_i9ykew8HKHxllDo_Caf4Q_mm37FJuua0IQLMWS2B5QBbxVvMXs7h5wNjnLCpbL7aWbyFtZCdczRG6SVB01l6AhkuIYPcrgDEY1wP3Wri" src="https://github.com/user-attachments/assets/fb251b66-eefd-4532-be1e-f2e84b2fa31c" />
 
+ 
+This guide assumes you have completed our `ROS2-Tutorial-Getting-Started` and understand the basic workflow.
 
-## Dependencies
+### 4.1 - Install Dependencies
 
-This project is built on ROS 2 Humble and requires several external hardware drivers and libraries.
+This project requires a few extra ROS 2 packages. Open a terminal and run the following commands:
+```bash
+# Install the Robot Localization package (used for sensor fusion)
+sudo apt install ros-humble-robot-localization
 
-### Core Dependencies
-*   **ROS 2 Humble:** [Installation Instructions](https://docs.ros.org/en/humble/Installation.html)
-*   **`robot_localization` (EKF):** `sudo apt install ros-humble-robot-localization`
-*   **`imu_tools`:** `sudo apt install ros-humble-imu-tools`
+# Install the IMU Tools package (for working with IMU data)
+sudo apt install ros-humble-imu-tools
+```
 
-### Sensor Drivers
-*   **YDLIDAR HP60C Camera:** The driver for this camera is provided by Yahboom Technology and can be found in their `ascam_ros2_ws` workspace. [Link to their GitHub or the Google Drive you used].
-*   **Pangolin:** Required by some visualization tools. It must be built from source. [Link to Pangolin GitHub](https://github.com/stevenlovegrove/Pangolin).
+### 2. Clone and Build the Project
+```bash
+# Navigate to your workspace's 'src' folder
+cd ~/ros2_ws/src
 
-## Getting Started
+# Clone this repository from the SG-Robotics-Open-Source organization
+git clone https://github.com/SG-Robotics-Open-Source/ros2-project-orion-ugv.git
 
-1.  **Clone this repository:**
-    ```bash
-    git clone https://github.com/YourUsername/project_orion_ugv.git
-    cd project_orion_ugv
-    ```
-2.  **Install all dependencies** as listed above.
-3.  **Build the workspace:**
-    ```bash
-    colcon build --symlink-install
-    ```
-4.  **Source the workspace:**
-    ```bash
-    source install/setup.bash
-    ```
-5.  **Launch the Digital Twin:**
-    ```bash
-    ros2 launch ugv_bringup digital_twin.launch.py
-    ```
+# Navigate back to the root of your workspace to build
+cd ~/ros2_ws
+
+# Build the project using colcon
+colcon build --symlink-install
+```
+### 3. Source and Launch the Digital Twin
+```bash
+# Source your workspace in your terminal
+source install/setup.bash
+
+# Launch the main simulation file
+ros2 launch ugv_bringup digital_twin.launch.py
+```
+
+## How to Know It's Working
+After running the launch command, an **RViz** window will open. You have successfully launched the digital twin if you see the following:
+
+1.  **The Robot Model:** The detailed 3D model of the Orion UGV is rendered in the center of the grid.
+2.  **The TF Tree:** You'll see the robot's coordinate frames (like `base_link`, `imu_link`, and the wheel frames). These show the geometric relationships between all parts of the robot.
+3.  **Driving the Digital Twin:**
+    *   Make sure the terminal where you ran the `launch` command is selected.
+    *   Use the keyboard keys (`u`, `i`, `o`, etc.) to drive the robot.
+    *   You will see the robot model move within RViz. The wheels will spin, and the `base_footprint` will glide across the grid.
+
+**What you are seeing is the end-to-end data flow:** Your keyboard creates a `Twist` message, the hardware interface calculates the kinematics, and `robot_state_publisher` visualizes the result in RViz. This confirms the entire foundational software stack is working correctly.
 
 ## Acknowledgment
 This work was made possible through an internship at CSIR-NAL. The URDF model and control concepts were inspired by and adapted from the work of Automatic Addison and Yahboom Technology on their Rosmaster X3.
 
 ## License
 This project is licensed under the Apache License 2.0. See the LICENSE file for details.
-# ros2-project-orion-ugv
-A complete ROS 2 Humble software stack for the 'Project Orion' encoder-less Mecanum-wheeled UGV, featuring a high-fidelity URDF, hardware interface nodes, and teleoperation with optional RTABmap(VSLAM) support.
