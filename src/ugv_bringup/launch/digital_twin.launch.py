@@ -14,7 +14,7 @@ def generate_launch_description():
 
     # --- Get Package Directories ---
     ugv_description_pkg = get_package_share_directory('ugv_description')
-    ascamera_pkg = get_package_share_directory('ascamera') 
+    #ascamera_pkg = get_package_share_directory('ascamera') 
 
     # --- Load URDF and RViz Config ---
     urdf_file_path = os.path.join(ugv_description_pkg, 'urdf', 'ugv_bot.urdf.xacro')
@@ -25,11 +25,11 @@ def generate_launch_description():
     # --- Define All Necessary Nodes ---
 
     # 1. Camera Node (from your teleop_function.launch.py)
-    camera_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(ascamera_pkg, 'launch', 'hp60c.launch.py')
-        )
-    )
+    # camera_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         os.path.join(ascamera_pkg, 'launch', 'hp60c.launch.py')
+    #     )
+    # )
     # 2. Hardware Interface Node (Teensy connection)
     hardware_interface_node = Node(
         package='ugv_hardware',
@@ -81,7 +81,7 @@ def generate_launch_description():
             description='Use simulation (Gazebo) clock if true'),
 
         # Add all nodes to be launched
-        camera_launch,
+        # camera_launch,
         hardware_interface_node,
         forward_kinematics_node,
         robot_state_publisher_node,
