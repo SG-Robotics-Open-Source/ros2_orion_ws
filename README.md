@@ -42,6 +42,12 @@ This guide assumes you have completed our `ROS2-Tutorial-Getting-Started` and un
 
 This project requires a few extra ROS 2 packages. Open a terminal and run the following commands:
 ```bash
+#For Software
+# Install xterm, which our launch file uses to open a new terminal for keyboard control
+sudo apt install xterm
+```
+```bash
+#For full stack with Hardware
 # Install the Robot Localization package (used for sensor fusion)
 sudo apt install ros-humble-robot-localization
 
