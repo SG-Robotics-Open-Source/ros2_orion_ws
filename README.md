@@ -67,15 +67,16 @@ git clone https://github.com/SG-Robotics-Open-Source/ros2_orion_ws
 cd ~/ros2_ws
 
 # Build the project using colcon
-colcon build --symlink-install
+colcon build 
 ```
 ### 3. Source and Launch the Digital Twin
-```bash
+To run the software-only simulation, you will use the teleop_rviz.launch.py file. This file starts everything you need (RViz, robot_state_publisher, teleop, and the forward_kinematics simulator) without trying to connect to any hardware.
+```bash  
 # Source your workspace in your terminal
 source install/setup.bash
 
-# Launch the main simulation file
-ros2 launch ugv_bringup digital_twin.launch.py
+# Launch the dedicated simulation file
+ros2 launch ugv_bringup teleop_rviz.launch.py
 ```
 
 ## How to Know It's Working
@@ -89,6 +90,12 @@ After running the launch command, an **RViz** window will open. You have success
     *   You will see the robot model move within RViz. The wheels will spin, and the `base_footprint` will glide across the grid.
 
 **What you are seeing is the end-to-end data flow:** Your keyboard creates a `Twist` message, the hardware interface calculates the kinematics, and `robot_state_publisher` visualizes the result in RViz. This confirms the entire foundational software stack is working correctly.
+
+## For Hardware Users (Advanced)
+
+This repository also contains other launch files, such as digital_twin.launch.py. These files are intended for use with the physical Orion robot.
+
+They are different because they also start the hardware_interface_node, which will actively try to connect to the Teensy microcontroller via a USB port (/dev/ttyACM0). If you run these launch files without the hardware connected, they will not work as expected.
 
 ## Acknowledgment
 This work was made possible through an internship at CSIR-NAL. The URDF model and control concepts were inspired by and adapted from the work of Automatic Addison and Yahboom Technology on their Rosmaster X3.
