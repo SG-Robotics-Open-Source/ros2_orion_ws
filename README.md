@@ -57,9 +57,7 @@ sudo apt install ros-humble-imu-tools
 
 ### 2. Clone and Build the Project
 ```bash
-# Navigate to your workspace's 'src' folder
-cd ~/ros2_ws/src
-
+# In you home directory or wherever,
 # Clone this repository from the SG-Robotics-Open-Source organization
 git clone https://github.com/SG-Robotics-Open-Source/ros2_orion_ws
 
