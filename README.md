@@ -36,7 +36,7 @@ The code is organized into four main ROS 2 packages:
 <img width="940" height="240" alt="ZL71IWCn4BtdAm8zU5gguCc355jQH4HGgeSYIvfCjs6JJ9cTMEhNszQLZJ47vvRttanuxqqwLiJHEz6rDkmKAI_NIhSDOGncYWv9ZkRdIHG6DYewdcFW5_i9ykew8HKHxllDo_Caf4Q_mm37FJuua0IQLMWS2B5QBbxVvMXs7h5wNjnLCpbL7aWbyFtZCdczRG6SVB01l6AhkuIYPcrgDEY1wP3Wri" src="https://github.com/user-attachments/assets/fb251b66-eefd-4532-be1e-f2e84b2fa31c" />
 
  
-This guide assumes you have completed our `ROS2-Tutorial-Getting-Started` and understand the basic workflow.
+This guide assumes you have completed our `ros2_tutorial_ws` and understand the basic workflow.
 
 ### 4.1 - Install Dependencies
 
@@ -61,7 +61,7 @@ sudo apt install ros-humble-imu-tools
 cd ~/ros2_ws/src
 
 # Clone this repository from the SG-Robotics-Open-Source organization
-git clone https://github.com/SG-Robotics-Open-Source/ros2-project-orion-ugv.git
+git clone https://github.com/SG-Robotics-Open-Source/ros2_orion_ws
 
 # Navigate back to the root of your workspace to build
 cd ~/ros2_ws
