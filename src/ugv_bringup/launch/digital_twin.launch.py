@@ -31,11 +31,11 @@ def generate_launch_description():
     #     )
     # )
     # 2. Hardware Interface Node (Teensy connection)
-    hardware_interface_node = Node(
-        package='ugv_hardware',
-        executable='hardware_interface', 
-        name='hardware_interface_node'
-    )
+    # hardware_interface_node = Node(
+    #     package='ugv_hardware',
+    #     executable='hardware_interface', 
+    #     name='hardware_interface_node'
+    # )
 
     # 3. Forward Kinematics Node (Odometry calculation)
     forward_kinematics_node = Node(
@@ -82,7 +82,7 @@ def generate_launch_description():
 
         # Add all nodes to be launched
         # camera_launch,
-        hardware_interface_node,
+        #hardware_interface_node,
         forward_kinematics_node,
         robot_state_publisher_node,
         teleop_node,
