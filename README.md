@@ -62,7 +62,7 @@ sudo apt install ros-humble-imu-tools
 git clone https://github.com/SG-Robotics-Open-Source/ros2_orion_ws
 
 # Navigate back to the root of your workspace to build
-cd ~/ros2_ws
+cd ~/ros2_tutorial_ws
 
 # Build the project using colcon
 colcon build 
