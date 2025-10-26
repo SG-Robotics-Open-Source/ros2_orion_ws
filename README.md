@@ -62,7 +62,7 @@ sudo apt install ros-humble-imu-tools
 git clone https://github.com/SG-Robotics-Open-Source/ros2_orion_ws
 
 # Navigate back to the root of your workspace to build
-cd ~/ros2_tutorial_ws
+cd ~/ros2_orion_ws
 
 # Build the project using colcon
 colcon build 
@@ -78,14 +78,45 @@ ros2 launch ugv_bringup teleop_rviz.launch.py
 ```
 
 ## How to Know It's Working
-After running the launch command, an **RViz** window will open. You have successfully launched the digital twin if you see the following:
 
-1.  **The Robot Model:** The detailed 3D model of the Orion UGV is rendered in the center of the grid.
-2.  **The TF Tree:** You'll see the robot's coordinate frames (like `base_link`, `imu_link`, and the wheel frames). These show the geometric relationships between all parts of the robot.
-3.  **Driving the Digital Twin:**
-    *   Make sure the terminal where you ran the `launch` command is selected.
-    *   Use the keyboard keys (`u`, `i`, `o`, etc.) to drive the robot.
-    *   You will see the robot model move within RViz. The wheels will spin, and the `base_footprint` will glide across the grid.
+After running the launch command, an **RViz** window and a small **xterm** window will open. Follow these steps to verify your setup.
+
+### 1. **Crucial RViz Step: Set the Fixed Frame to `odom`**
+
+The "Fixed Frame" in RViz is the reference point for everything you see. To correctly visualize the robot moving around its world, this **must be set to `odom`**. By default, it might be set to `base_footprint`, which will cause errors and make it seem like the robot isn't moving.
+
+**Follow these images to fix it:**
+
+<table>
+  <tr>
+    <td align="center"><strong>1. Initial View (Notice the errors and Fixed Frame is `base_footprint`)</strong></td>
+  </tr>
+  <tr>
+    <td><img src="[<img width="1920" height="1077" alt="screenshot-20251027_022138" src="https://github.com/user-attachments/assets/e76bfd22-bc44-4731-9caa-2ad038c5c25f" />]" alt="RViz with base_footprint" width="600"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>2. Click the dropdown next to "Fixed Frame".</strong></td>
+  </tr>
+  <tr>
+    <td><img src="[PASTE-LINK-TO-YOUR-CLOSEUP-OF-BASE_FOOTPRINT-SELECTED]" alt="Selecting the Fixed Frame" width="400"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>3. Select `odom` from the list. The errors should disappear.</strong></td>
+  </tr>
+  <tr>
+    <td><img src="[PASTE-LINK-TO-YOUR-CLOSEUP-OF-ODOM-SELECTED]" alt="Odom selected" width="400"></td>
+  </tr>
+</table>
+
+### 2. Drive the Digital Twin
+
+Now that RViz is set up correctly, you can drive the robot:
+
+*   Click on the **xterm window** to make it active.
+*   Use the keyboard keys (`u`, `i`, `o`, etc.) to drive the robot.
+*   You will see the robot model move within the main RViz window, leaving its starting point.
+
+This confirms that the entire software simulation stack is working correctly. You have successfully visualized the TF transform from the `odom` frame to the `base_footprint` frame, which is a fundamental concept in mobile robotics.
 
 **What you are seeing is the end-to-end data flow:** Your keyboard creates a `Twist` message, the hardware interface calculates the kinematics, and `robot_state_publisher` visualizes the result in RViz. This confirms the entire foundational software stack is working correctly.
 
