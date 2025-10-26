@@ -92,8 +92,12 @@ The "Fixed Frame" in RViz is the reference point for everything you see. To corr
     <td align="center"><strong>1. Initial View (Notice the errors and Fixed Frame is `base_footprint`)</strong></td>
   </tr>
   <tr>
-    <td><img src="[<img width="1920" height="1077" alt="screenshot-20251027_022138" src="https://github.com/user-attachments/assets/e76bfd22-bc44-4731-9caa-2ad038c5c25f" />]" alt="RViz with base_footprint" width="600"></td>
+    <td><img src="[<img width="1920" height="1077" alt="screenshot-20251027_022138" src="https://github.com/user-attachments/assets/b5ac7f7e-cf06-422d-af42-52467eb3c5c2" />
+]" alt="RViz with base_footprint" width="600"></td>
+   <img width="1920" height="1077" alt="screenshot-20251027_022138" src="https://github.com/user-attachments/assets/a7e19270-5e09-4898-9d17-0be5f2bf11ca" />
+
   </tr>
+
   <tr>
     <td align="center"><strong>2. Click the dropdown next to "Fixed Frame".</strong></td>
   </tr>
