@@ -30,7 +30,9 @@ setup(
     maintainer_email='your_email@example.com',
     description='UGV Robot Description Package',
     license='BSD-3-Clause',
-    tests_require=['pytest'],
+    extras_require={
+        'test': ['pytest'],
+    },
     entry_points={
         'console_scripts': [],
     },
