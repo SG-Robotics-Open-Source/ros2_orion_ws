@@ -21,7 +21,8 @@ def generate_launch_description():
         Node(
             package='ugv_hardware',
             executable='forward_kinematics',
-            name='forward_kinematics_node'
+            name='forward_kinematics_node',
+            parameters=[{'publish_tf': True}]
         ),
         
         # 3. Start your teleop node
