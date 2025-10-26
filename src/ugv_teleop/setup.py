@@ -17,7 +17,9 @@ setup(
     maintainer_email='nvidia@todo.todo',
     description='TODO: Package description',
     license='TODO: License declaration',
-    tests_require=['pytest'],
+    extras_require={
+        'test': ['pytest'],
+    },
     entry_points={
         'console_scripts': ['teleop=ugv_teleop.teleop_node:main',
                             'tuning=ugv_teleop.physical_tuning_teleop:main',
