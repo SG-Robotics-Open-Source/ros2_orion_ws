@@ -85,39 +85,27 @@ After running the launch command, an **RViz** window and a small **xterm** windo
 
 The "Fixed Frame" in RViz is the reference point for everything you see. To correctly visualize the robot moving around its world, this **must be set to `odom`**. By default, it might be set to `base_footprint`, which will cause errors and make it seem like the robot isn't moving.
 
-**Follow these images to fix it:**
+**Follow these steps to fix the frame configuration:**
 
-<table>
-  <tr>
-    <td align="center"><strong>1. Initial View (Notice the errors and Fixed Frame is `base_footprint`)</strong></td>
-  </tr>
-  <tr>
-    <td><img src="[<img width="1920" height="1077" alt="screenshot-20251027_022138" src="https://github.com/user-attachments/assets/b5ac7f7e-cf06-422d-af42-52467eb3c5c2" />
-]" alt="RViz with base_footprint" width="600"></td>
-   <img width="1920" height="1077" alt="screenshot-20251027_022138" src="https://github.com/user-attachments/assets/a7e19270-5e09-4898-9d17-0be5f2bf11ca" />
+#### Step 1: Initial View
+**Notice that Fixed Frame is currently set to `base_footprint`**
+<p align="center">
+  <img width="90%" alt="Initial View" src="https://github.com/user-attachments/assets/a7e19270-5e09-4898-9d17-0be5f2bf11ca" />
+</p>
 
-  </tr>
-
-  <tr>
-    <td align="center"><strong>2. Click the dropdown next to "Fixed Frame".</strong></td>
-  </tr>
-  <tr>
-    <td><img src="[PASTE-LINK-TO-YOUR-CLOSEUP-OF-BASE_FOOTPRINT-SELECTED]" alt="Selecting the Fixed Frame" width="400"></td>
-  </tr>
-  <tr>
-    <td align="center"><strong>3. Select `odom` from the list. The errors should disappear.</strong></td>
-  </tr>
-  <tr>
-    <td><img src="[PASTE-LINK-TO-YOUR-CLOSEUP-OF-ODOM-SELECTED]" alt="Odom selected" width="400"></td>
-  </tr>
-</table>
+#### Step 2 & 3: Change Fixed Frame
+<div align="center">
+  <img width="45%" alt="Click Dropdown" src="https://github.com/user-attachments/assets/90845db2-9011-4b52-95d8-17c2f186f171" />
+  <img width="45%" alt="Select odom" src="https://github.com/user-attachments/assets/bc24530b-60f6-43dc-92b7-7d121e6b817c" />
+</div>
 
 ### 2. Drive the Digital Twin
 
 Now that RViz is set up correctly, you can drive the robot:
 
 *   Click on the **xterm window** to make it active.
-*   Use the keyboard keys (`u`, `i`, `o`, etc.) to drive the robot.
+*   Use the keyboard keys (`i`, `k`, `j`, `l`, `u`, `o`.) to drive the robot.
+*   use the keyboard key(`w`, `a`, `s`, `d`.) to turn the camera.
 *   You will see the robot model move within the main RViz window, leaving its starting point.
 
 This confirms that the entire software simulation stack is working correctly. You have successfully visualized the TF transform from the `odom` frame to the `base_footprint` frame, which is a fundamental concept in mobile robotics.
