@@ -17,7 +17,9 @@ setup(
     maintainer_email='nvidia@todo.todo',
     description='TODO: Package description',
     license='TODO: License declaration',
-    tests_require=['pytest'],
+    extras_require={
+        'test': ['pytest'],
+    },
     entry_points={
         'console_scripts': ['hardware_interface=ugv_hardware.hardware_interface_node:main',
                             'forward_kinematics=ugv_hardware.forward_kinematics_node:main',
